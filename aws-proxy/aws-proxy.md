@@ -25,6 +25,7 @@ output = /var/log/stunnel.log
 [squid]
 accept = 443
 connect = 127.0.0.1:3128
+EOF
 ```
 ```
 openssl req -new > proxy.csr
@@ -53,7 +54,10 @@ http_access allow ncsa_users
 via off
 forwarded_for delete
 ```
-
+```
+service squid start
+/usr/bin/stunnel
+```
 
 # On your local server:
 * scp stunnel.pem to your local server
@@ -80,4 +84,8 @@ fips = no
 [proxy]
 accept = 0.0.0.0:8088
 connect = xxx.xxx.xxx.xxx:443
+EOF
+```
+```
+/usr/bin/stunnel
 ```
