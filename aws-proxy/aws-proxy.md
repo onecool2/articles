@@ -30,7 +30,7 @@ EOF
 ```
 openssl req -new > proxy.csr
 openssl rsa -in privkey.pem -out proxy.key
-openssl x509 -in charlie.csr -out proxy.crt -req -signkey proxy.key -days 3650
+openssl x509 -in proxy.csr -out proxy.crt -req -signkey proxy.key -days 3650
 ```
 * /etc/squid/squid.conf
 ```
