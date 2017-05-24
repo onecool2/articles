@@ -1,4 +1,4 @@
-On EC2:
+# On EC2:
 ```
 yum install squid openssl openssl-devel
 yum install stunnel
@@ -25,10 +25,13 @@ output = /var/log/stunnel.log
 accept = 443
 connect = 127.0.0.1:3128
 ```
-On your local server:
-cat << EOF >>/etc/stunnel/stunnel.conf
+# On your local server:
+scp stunnel.pem to your local server
 ```
 yum install stunnel
+```
+```
+cat << EOF >>/etc/stunnel/stunnel.conf
 cert = /etc/stunnel/stunnel.pem
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
