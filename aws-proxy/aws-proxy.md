@@ -39,8 +39,9 @@ acl SSL_ports port 80
 # Squid normally listens to port 3128
 http_port 3128 cert=/etc/squid/cert/proxy.crt key=/etc/squid/cert/proxy.key
 ```
-```
+
 * if you want to add username and password for your proxy
+```
 htpasswd -c /etc/squid/user.pass username
 in the begin of the squid.conf
 
