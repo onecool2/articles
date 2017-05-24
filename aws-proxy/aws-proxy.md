@@ -2,6 +2,7 @@
 ```
 yum install squid openssl openssl-devel
 yum install stunnel
+yum install httpd
 openssl req -new -x509 -days 3650 -nodes -out stunnel.pem -keyout stunnel.pem  
 openssl gendh 512>> stunnel.pem
 ```
@@ -25,8 +26,37 @@ output = /var/log/stunnel.log
 accept = 443
 connect = 127.0.0.1:3128
 ```
+```
+openssl req -new > proxy.csr
+openssl rsa -in privkey.pem -out proxy.key
+openssl x509 -in charlie.csr -out proxy.crt -req -signkey proxy.key -days 3650
+```
+* /etc/squid/squid.conf
+```
+acl SSL_ports port 80
+
+# Squid normally listens to port 3128
+http_port 3128 cert=/etc/squid/cert/proxy.crt key=/etc/squid/cert/proxy.key
+```
+```
+htpasswd -c /etc/squid/user.pass username
+in the begin of the squid.conf
+
+auth_param basic program /lib64/squid/basic_ncsa_auth /etc/squid/user.pass
+auth_param basic children 5
+auth_param basic realm Welcome to test
+auth_param basic credentialsttl 2 hours
+acl ncsa_users proxy_auth REQUIRED
+dns_nameservers 8.8.8.8
+http_access allow ncsa_users
+
+via off
+forwarded_for delete
+```
+
+
 # On your local server:
-scp stunnel.pem to your local server
+* scp stunnel.pem to your local server
 ```
 yum install stunnel
 ```
