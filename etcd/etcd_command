@@ -1,3 +1,144 @@
 export ETCDCTL-API=3
 
 etcdctl get --prefix / --keyps-only
+
+创建、更新key
+
+etcdctl put /test/ok 11
+OK
+
+etcdctl put /test/ok 22
+OK
+
+删除key
+
+etcdctl del  /test/gg
+1
+
+#删除所有/test前缀的节点
+etcdctl del  /test --prefix
+4
+1
+2
+3
+4
+5
+6
+1
+2
+3
+4
+5
+6
+查询key
+
+etcdctl get /test/ok
+/test/ok
+11
+
+# 前缀查询
+etcdctl get /test/ok --prefix
+/test/ok
+11
+/test/ok/gg
+88
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+watch key
+
+etcdctl watch  /test/ok
+PUT
+/test/ok
+11
+
+#如果监听子节点
+etcdctl watch  /test/ok --prefix
+PUT
+/test/ok
+11
+PUT
+/test/ok/first
+11
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+申请租约
+
+从申请开始计算时间
+
+etcdctl lease grant 40
+lease 4e5e5b853f528859 granted with TTL(40s)
+1
+2
+1
+2
+授权租约
+
+节点的生命伴随着租约到期将会被DELETE
+
+etcdctl put --lease=4e5e5b853f528859 /test/ok/first xx
+OK
+1
+2
+1
+2
+撤销租约
+
+撤销租约和租约到期一样，节点都会被删除
+
+etcdctl lease revoke 4e5e5b853f5286cc
+lease 4e5e5b853f5286cc revoked
+1
+2
+1
+2
+租约续约
+
+每当到期将会续约
+
+etcdctl lease keep-alive 4e5e5b853f52892b
+lease 4e5e5b853f52892b keepalived with TTL(40)
+lease 4e5e5b853f52892b keepalived with TTL(40)
+. . .
+
