@@ -4,9 +4,9 @@ set -e
 etcd0=10.160.60.203
 etcd1=10.160.60.107
 etcd2=10.160.60.72
-###更改这里的IP, 自行确保NTP同步
+### modify following IP to sync up with NTP server
 declare -A NODE_MAP=( ["etcd0"]="$etcd0" ["etcd1"]="$etcd1" ["etcd2"]="$etcd2" )
-###只支持部署3个节点etcd集群
+### currently only support 3 node etcd cluster
 
 
 etcd::download()
