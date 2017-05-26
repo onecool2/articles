@@ -1,0 +1,3 @@
+export ETCDCTL-API=3
+
+etcdctl get --prefix / --keyps-only
