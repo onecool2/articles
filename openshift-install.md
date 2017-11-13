@@ -10,14 +10,23 @@ Fedora 21, CentOS 7.3, RHEL 7.3, or RHEL 7.4或者RHEL Atomic Host 7.3.6 or late
 
 ### 3 开始执行安装命令：
 yum install -y wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
-yum update -y 
+
+yum update -y
+
 yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+
 sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo
+
 yum -y --enablerepo=epel install ansible pyOpenSSL
+
 yum install -y docker-1.12.6
+
 cd ~
+
 git clone https://github.com/openshift/openshift-ansible
+
 cd openshift-ansible
+
 ssh-copy-id host
   docker pull openshift/origin-deployer:v3.6.1 
   docker pull openshift/origin-docker-registry:v3.6.1
