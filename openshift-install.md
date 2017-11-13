@@ -61,7 +61,7 @@ node2-26-98 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 node3-26-99 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 <pre></code>
 
-然后执行：ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
+### 4 然后执行：ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
 
 disable mutiple NIC.
 add master hostname into /etc/hosts
