@@ -24,22 +24,24 @@ sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo
 yum -y --enablerepo=epel install ansible pyOpenSSL
 
 ### 4 安装docker 1.12.6
-yum install -y docker-1.12.6
-*1、 如果是测试环境，那么docker的storage用默认的devicemapper的方式就可以。*
-*2、如果是生产环境，有独立的逻辑卷，可以用把添加进。*
+1、yum install -y docker-1.12.6
+*a） 如果是测试环境，那么docker的storage用默认的devicemapper的方式就可以。*
+
+*b）如果是生产环境，有独立的逻辑卷，可以用把添加进。*
 <pre><code>
 # cat <<EOF > /etc/sysconfig/docker-storage-setup
 VG=docker-vg
 EOF
 </pre></code>
-*3、或者如果你有独立的块设备可以*
+
+*c）、或者如果你有独立的块设备可以*
 <pre><code>
 # cat <<EOF > /etc/sysconfig/docker-storage-setup
 DEVS=/dev/vdc
 VG=docker-vg
 EOF
 </pre></code>
-然后执行docker-storage-setup
+2、然后执行docker-storage-setup
 ### 5 下载openshift-ansible项目
 cd ~
 
