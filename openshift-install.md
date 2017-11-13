@@ -21,6 +21,7 @@ yum -y --enablerepo=epel install ansible pyOpenSSL
 
 yum install -y docker-1.12.6
 
+### 4 下载openshift-ansible项目
 cd ~
 
 git clone https://github.com/openshift/openshift-ansible
@@ -33,7 +34,7 @@ ssh-copy-id host
   docker pull openshift/origin-haproxy-router:v3.6.1
   docker pull openshift/origin-pod:v3.6.1
 
-下面是ansible中host文件的内容
+下面是ansible中/etc/ansible/host文件的内容
 <pre><code>
 # Create an OSEv3 group that contains the masters, nodes, and etcd groups
 [OSEv3:children]
