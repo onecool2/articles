@@ -9,8 +9,8 @@ Fedora 21, CentOS 7.3, RHEL 7.3, or RHEL 7.4或者RHEL Atomic Host 7.3.6 or late
 最少2 core CPU， 最小16 GB RAM. 在/var目录下最少40 GB剩余空间，在/usr/local/bin目录下最少1GB剩余空间，/tmp目录下最少1GB的剩余空间。
 
 ### 3 开始执行安装命令：
-/**
-*yum install -y wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
+<pre><code>
+ yum install -y wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
  yum update -y 
  yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
  sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo
@@ -37,19 +37,19 @@ Fedora 21, CentOS 7.3, RHEL 7.3, or RHEL 7.4或者RHEL Atomic Host 7.3.6 or late
  # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
  # openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind':  'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
 	
-*[etcd]
+[etcd]
 master1-26-95
 # host group for masters
 [masters]
 master1-26-95
 
-*# host group for nodes, includes region info
+# host group for nodes, includes region info
 [nodes]
 master1-26-95 openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
 node1-26-97 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 node2-26-98 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 node3-26-99 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
-*/
+<pre></code>
 ----------------------------------------------------------------------------------
 ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
 
