@@ -42,11 +42,15 @@ DEVS=/dev/vdc
 VG=docker-vg
 EOF
 </pre></code>
-2、然后执行docker-storage-setup
+
+2、然后执行
+<pre><code>
+docker-storage-setup
+</pre></code>
 
 3、启动并设置docker自动启动
 <pre><code>
-systemct enalbe docker
+systemct enable docker
 systemctl start docker
 </pre></code>
 
