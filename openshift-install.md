@@ -95,10 +95,14 @@ node2-26-98 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 node3-26-99 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 </pre></code>
 
-### 4 然后执行：ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
+### 5.5 如果节点上有2块或者2块以上网卡建议disable掉多余的NIC.
 
-disable mutiple NIC.
-add master hostname into /etc/hosts
+### 6 把所有的node的hostname加入到每一个node的/etc/hosts里
+
+### 7 然后执行：ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
+
+
+
 ##################################################################################
 1. unset https_proxy http_proxy
 2. cp centos7.json centos.json
