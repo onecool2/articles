@@ -1,6 +1,9 @@
-### Openshift Install
+# Openshift Install
 
-这片文章介绍如何安装Openshift 1.6，现在主流的方式有2两种，一种是快速安装 oc cluster up，比较适合于快速部署一个单机版本的openshift，但是要安装多节点版本这种就
+这片文章介绍如何安装Openshift 3.6
+
+现在主流的方式有2两种，一种是快速安装 oc cluster up，比较适合于快速部署一个单机版本的openshift，但是要安装多节点版本这种就
+
 ---
 ### 1 Openshif对操作系统的要求：
 Fedora 21, CentOS 7.3, RHEL 7.3, or RHEL 7.4或者RHEL Atomic Host 7.3.6 or later.
