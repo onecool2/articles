@@ -59,7 +59,7 @@ master1-26-95 openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
 node1-26-97 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 node2-26-98 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 node3-26-99 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
-<pre></code>
+</pre></code>
 
 ### 4 然后执行：ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
 
