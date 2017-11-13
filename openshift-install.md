@@ -1,9 +1,14 @@
-# Openshift Install
-### 这片文章介绍如何安装Openshift 1.6，现在主流的方式有2两种，一种是快速安装 oc cluster up，比较适合于快速部署一个单机版本的openshift，但是要安装多节点版本这种就
-1 Openshif对操作系统的要求：
- Fedora 21, CentOS 7.3, RHEL 7.3, or RHEL 7.4或者RHEL Atomic Host 7.3.6 or later.
-2 硬件配置：最少2 core CPU， 最小16 GB RAM. 在/var目录下最少40 GB剩余空间，在/usr/local/bin目录下最少1GB剩余空间，/tmp目录下最少1GB的剩余空间。
-3 开始执行安装命令：
+### Openshift Install
+
+这片文章介绍如何安装Openshift 1.6，现在主流的方式有2两种，一种是快速安装 oc cluster up，比较适合于快速部署一个单机版本的openshift，但是要安装多节点版本这种就
+
+### 1 Openshif对操作系统的要求：
+Fedora 21, CentOS 7.3, RHEL 7.3, or RHEL 7.4或者RHEL Atomic Host 7.3.6 or later.
+
+### 2 硬件配置：
+最少2 core CPU， 最小16 GB RAM. 在/var目录下最少40 GB剩余空间，在/usr/local/bin目录下最少1GB剩余空间，/tmp目录下最少1GB的剩余空间。
+
+### 3 开始执行安装命令：
 yum install -y wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
 
 yum update -y 
