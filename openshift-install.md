@@ -25,6 +25,7 @@ yum -y --enablerepo=epel install ansible pyOpenSSL
 
 ### 4 安装docker 1.12.6
 1、yum install -y docker-1.12.6
+
 *a） 如果是测试环境，那么docker的storage用默认的devicemapper的方式就可以。*
 
 *b）如果是生产环境，有独立的逻辑卷，可以用把添加进。*
@@ -42,6 +43,13 @@ VG=docker-vg
 EOF
 </pre></code>
 2、然后执行docker-storage-setup
+
+3、启动并设置docker自动启动
+<pre><code>
+systemct enalbe docker
+systemctl start docker
+</pre></code>
+
 ### 5 下载openshift-ansible项目
 cd ~
 
