@@ -1,0 +1,6 @@
+1 builds
+ 1) Docker build
+ 2) Source-to-Image
+ 3) Custom Build
+ 4) Pipeline Build
+2 Image Stream
