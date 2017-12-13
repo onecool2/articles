@@ -4,3 +4,8 @@
  3) Custom Build
  4) Pipeline Build
 2 Image Stream
+
+
+# complie openshift
+yum install -y krb5-devel
+make clean;make
