@@ -9,3 +9,7 @@
 # complie openshift
 yum install -y krb5-devel
 make clean;make
+
+#if you want to login router container as Root user, you should add "runAsUser: 0" under scurity context in router template yaml
+
+#use gdb debug, we should add 
