@@ -14,3 +14,11 @@ make clean;make
 
 #use gdb debug, we should add 
 https://blog.codeship.com/using-gdb-debugger-with-go/
+
+
+看了很久的router代码终于有点收获了 
+首先启动的出了一些东西外，关心的在/pkg/router/controller/factory/factory.go:Create里,它调用
+	f.initInformers(rc) 初始化Informer
+	f.processExistingItems(rc) 处理已经存在的route或者endpoint
+	f.registerInformerEventHandlers(rc)，注册informer
+ 
