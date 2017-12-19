@@ -22,3 +22,4 @@ https://blog.codeship.com/using-gdb-debugger-with-go/
 	f.processExistingItems(rc) 处理已经存在的route或者endpoint
 	f.registerInformerEventHandlers(rc)，注册informer
  
+etcdctl --endpoints=10.12.26.97:2379 --cacert=/etc/origin/master/master.etcd-ca.crt --key=/etc/origin/master/master.etcd-client.key --cert=/etc/origin/master/master.etcd-client.crt get /openshift.io/routes/scrm-dev-project --prefix
