@@ -1,0 +1,7 @@
+getconf LONG_BIT
+
+sudo lshw -C cpu|grep width
+
+grep -q '\<lm\>' /proc/cpuinfo && echo 64 bits || echo 32 bits
+
+isainfo -v
