@@ -1,0 +1,15 @@
+run openshift v3.6.1 on rpi3b+
+
+1) modify hack/build-go.sh : add following 
+platform="linux/arm"
+
+2) modify vendor/k8s.io/kubernetes/pkg/kubelet/cadvisor.go :  delete first line, which prevent compile in non-linux/amd64 platform
+
+3) remove cadvisor_unsupported.go : this step maybe not nececcery
+
+4) modify netlink.go
+
+5) add "cgroup_enable=cpuset cgroup_memory=1" into /boot/cmdline.txt
+
+1093
+
