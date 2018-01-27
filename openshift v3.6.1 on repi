@@ -11,5 +11,7 @@ platform="linux/arm"
 
 5) add "cgroup_enable=cpuset cgroup_memory=1" into /boot/cmdline.txt
 
+6) vendor/github.com/google/cadvisor/utils/cpuload/netlink/netlink.go
+   return prepareMessage(id, 4, buf.Bytes())
 1093
 
