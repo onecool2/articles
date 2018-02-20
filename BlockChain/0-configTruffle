@@ -1,4 +1,4 @@
-#1. Install truffle #
+###1. Install truffle #
     npm install -g truffle 3.2.1
 #2. Install testRPC #
     npm install -g ethereumjs-testrpc
