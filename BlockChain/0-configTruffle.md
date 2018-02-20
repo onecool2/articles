@@ -1,11 +1,16 @@
-#1. Install truffle #
+#1. Install truffle 
     npm install -g truffle 3.2.1
-#2. Install testRPC #
+    
+#2. Install testRPC 
     npm install -g ethereumjs-testrpc
+    
 #3. Truffle init #
     truffle init webpack
+    
 #4. Truffle compile
     truffle compile
+    
 #5. Truffle migrate
     npm run dev
+    
 #6. then you can access it from localhost:8080
