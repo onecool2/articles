@@ -2,7 +2,7 @@ When Istio Meets Jaeger — An Example of End-to-end Distributed Tracing
 
 ![](https://cdn-images-1.medium.com/max/1600/1*6MjgQZk-pWVtF88PENpNhA.png)
 
-Kubernetes很NB！因为他能帮助很多的工程师团队去实现SOA（面向服务的架构体系）。在过去很长的一段时间里，我们都是围绕monolith mindset的概念构来构建我们的应用程序。也就是说，我们会在一个很牛X的计算机上运行一个应用的所有的组件。像帐户管理，结算，报告生成等这些工作，都是在一个机器上用共享资源的方式运行的。这种模式一直很ok，直到SOA出现了。它通过将应用程序拆分成一个个相对小的组件，并让它们之间使用REST或gRPC进行通信。我们其实仅仅希望这样做会比以前容易点，但后来我们发现，其实等待我们的是一堆新的挑战。跨服务的访问如何通信？如何去observe两个微型服务之间的通信（如日志或tracing）？本文演示如何在Kubernetes集群内部设置OpenTracing，以便在服务之间进行end-to-end的去跟踪，和在一个服务内部使用正确的工具进行跟踪。
+Kubernetes很NB！因为他能帮助很多的工程师团队去实现SOA（面向服务的架构体系）。在过去很长的一段时间里，我们都是围绕monolith mindset的概念构来构建我们的应用程序。也就是说，我们会在一个很牛X的计算机上运行一个应用的所有的组件。像帐户管理，结算，报告生成等这些工作，都是在一个机器上用共享资源的方式运行的。这种模式一直很ok，直到SOA出现了。它通过将应用程序拆分成一个个相对小的组件，让它们之间使用REST或gRPC进行通信。我们这么做，是希望应用程序比以前的方式管理更加容易，但后来发现，这样的后果是，迎接我们的将是一堆新的挑战（所谓愿望是丰满的，现实是骨感的）。跨service的访问如何通信？如何去observe两个micro service之间的通信（如日志或tracing）？本文演示如何在Kubernetes集群内部设置OpenTracing，以便在service之间进行end-to-end的tracing，和在一个service内部使用正确的工具进行tracing。
 
 
 ### 创建Kubernetes
@@ -113,7 +113,7 @@ func main() {
 		nethttp.Middleware(tracer, http.DefaultServeMux))
 }
 ```
-从第28-30行开始，我们创建了一个Zipkin propagator，告诉Jaeger从OpenZipkin的request header中捕捉上下文(context)。你可能会问，这些header是怎么被放到request的开始部分的？还记得吗，当我说Istio用side care处理服务间的通信，并且应用程序只与它交互。对！，你可能已经猜到了。为了让Istio跟踪服务之间的request，当有request进入集群时，Istio的Ingress Controller将注入一组header。然后，它围绕着Envoy sidecars进行传播，并且每个都会将相关的 associated span上报给Jaeger。这有助于将span对应到每个trace。我们的应用程序代码利用这些header来收集内部服务之间的span。
+从第28-30行开始，我们创建了一个Zipkin propagator，告诉Jaeger从OpenZipkin的request header中捕捉上下文(context)。你可能会问，这些header是怎么被放到request的开始部分的？还记得吗，当我说Istio用side care处理服务间的通信，并且应用程序只与它交互。对！，你可能已经猜到了。为了让Istio跟踪服务之间的request，当有request进入集群时，Istio的Ingress Controller将注入一组header。然后，它通过Envoy sidecars进行传播，并且每个都会将相关的 associated span上报给Jaeger。它会让span对应到每个trace。我们的应用程序代码利用这些header来收集内部服务之间的span。
 
 下面是一个被Istio的Ingress Controller注入到OpenZipkin中header的列表
 ```
