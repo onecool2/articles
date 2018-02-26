@@ -199,8 +199,11 @@ Application code
 ![](https://cdn-images-1.medium.com/max/1600/0*hHfzLg-i6yMtPFlk.)
 
 ### 结束语
+
 SOA带来了一堆的待解决问题，特别是在如何observ服务之间的通信上。
+
 Istio+Jager的集成解决方案可以从servcie到service的这个层面解决这个问题。
+
 使用OpenZipkin prapagator配合Jaege，可以在end-to-end上tracing。
 
 
