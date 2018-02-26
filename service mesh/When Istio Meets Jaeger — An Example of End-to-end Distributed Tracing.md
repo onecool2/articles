@@ -13,7 +13,7 @@ Kubernetes很NB！因为他能帮助很多的工程师团队去实现SOA（面�
 
 #### 创建集群
 
-{{{
+`
 kops create cluster \ 
 --name steven.buffer-k8s.com \ 
 --cloud aws \ 
@@ -29,4 +29,4 @@ kops create cluster \
 --authorization=RBAC \ 
 --ssh-public-key="~/.ssh/kube_aws_rsa.pub" \ 
 --yes
-}}}
+`
