@@ -1,3 +1,4 @@
+```
 pragma solidity 0.4.21;
 /*数组类型Demo*/
 contract DemoTypes303 {
@@ -27,3 +28,4 @@ contract DemoTypes303 {
     strArr.length--;
   }
 }
+```
