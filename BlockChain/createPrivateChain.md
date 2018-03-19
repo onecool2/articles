@@ -18,7 +18,7 @@
    ```
    geth --datadir node init genesis.json
    echo "your account password" > node/password
-   geth --datadir node0 --port 30000 --nodiscover --unlock '0' --password ./node/password console
+   geth --datadir node --port 30000 --nodiscover --unlock '0' --password ./node/password console
    ```
    
 #### 5. Through consol found "enode" on each node and put them into static-nodes.json
@@ -35,7 +35,7 @@
 #### 6. Copy static-nodes.json to "node" directory on each node and relanch geth 
    ```
    copy static-nodes node/
-   geth --datadir node0 --port 30000 --nodiscover --unlock '0' --password ./node/password console
+   geth --datadir node --port 30000 --nodiscover --unlock '0' --password ./node/password console
    run "admin.peers" to verify the operation whether is success.
    ```
 ### 7. mine.start()   
