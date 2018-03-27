@@ -1,0 +1,13 @@
+ 1 sudo apt-get install python-setuptools python-dev build-essential 
+ 
+ 2 sudo easy_install pip 
+ 
+ 3 sudo add-apt-repository ppa:gophers/go
+   sudo apt-get update
+   sudo apt-get install golang-stable
+   
+ 4 cp vendor/github.com/golang/protobuf/protoc-gen-go/protoc-gen-go build/docker/gotools/protoc-gen-go build/docker/gotools/bin
+ 
+ 5 docker pull hyperledger/fabric-baseimage:x86_64-0.4.6
+ 
+ 6 make
