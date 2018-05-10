@@ -19,5 +19,9 @@ cleos create account eosio eos.offical <owner key> <active key>
 cleos set contract  eos.offical contracts/eosio.system/ 
 
 cleos push action eos.offical  issue '["eos.offical", "1000000.0000 EOS",""]' -p eos.offical 
+
 此种方法不行 部署eosio.system必须是eosio账户
 
+get table的用法
+
+./cleos get table ${YOUR CONTRACT NAME ( ACCOUNT NAME PROVIDED WHEN CREATE CONTRACT )} ${WHICH COLUM NAME YOU WANT TO GET} ${TABLENAME}
