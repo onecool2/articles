@@ -11,11 +11,13 @@ cleos get currency balance eos.store eos.store EOS
 cleos push action eos.store transfer '["eos.store","eosio","100 EOS",""]' -p eos.stor
 
 cleos get currency balance eos.store eosio
+
 发行EOS官方币
+
 cleos create account eosio eos.offical <owner key> <active key>  
 
 cleos set contract  eos.offical contracts/eosio.system/ 
 
 cleos push action eos.offical  issue '["eos.offical", "1000000.0000 EOS",""]' -p eos.offical 
-
+此种方法不行 部署eosio.system必须是eosio账户
 
