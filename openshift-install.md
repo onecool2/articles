@@ -115,13 +115,13 @@ node3-26-99 openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
    # vgreduce ?
 
 ###############################
-export KUBECONFIG=/etc/origin/master/admin.kubeconfig 
-oc login -u system:admin 
-oadm policy add-cluster-role-to-user cluster-admin admin 
-oadm manage-node master1-40-12 --schedulable 
-docker load < /root/origin-pod.tar;docker tag 77b5b3e452aa openshift/origin-pod:v3.6.1;docker load < /root/origin-deployer.tar;docker tag 90fbedb07cc9 openshift/origin-deployer:v3.6.1 
-oadm policy add-scc-to-user hostnetwork -z router 
-oadm router router --replicas=1 --service-account=router 
+export KUBECONFIG=/etc/origin/master/admin.kubeconfig  
+oc login -u system:admin  
+oadm policy add-cluster-role-to-user cluster-admin admin  
+oadm manage-node master1-40-12 --schedulable  
+docker load < /root/origin-pod.tar;docker tag 77b5b3e452aa openshift/origin-pod:v3.6.1;docker load < /root/origin-deployer.tar;docker tag 90fbedb07cc9 openshift/origin-deployer:v3.6.1  
+oadm policy add-scc-to-user hostnetwork -z router  
+oadm router router --replicas=1 --service-account=router  
 
 ####################harbor
 install docker-compose 
