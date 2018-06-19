@@ -1,12 +1,12 @@
-for name in msig token disco bios ram ramfee names stake saving bpay vpay unregd
-do
-  cleos -u http://nodeos:80 create account eosio eosio.$name EOS7FNpU6P3yhT7bkf3fs7aNUxb3yNbMXPbn4nsYgh3ZkEhtchEAH
-done
+for name in msig token disco bios ram ramfee names stake saving bpay vpay unregd  
+do  
+  cleos -u http://nodeos:80 create account eosio eosio.$name EOS7FNpU6P3yhT7bkf3fs7aNUxb3yNbMXPbn4nsYgh3ZkEhtchEAH  
+done  
 
-for name in msig token
-do
-  cleos -u http://nodeos:80 set contract eosio.$name /eos_code/mainnet/eos/build/contracts/eosio.$name
-done
+for name in msig token  
+do  
+  cleos -u http://nodeos:80 set contract eosio.$name /eos_code/mainnet/eos/build/contracts/eosio.$name  
+done  
 
 
 cleos wallet import 5Kgh744izqDCNyuRZcBu4nMjgJbBwWBdqQZuQi53qPB9L69Cj9X
