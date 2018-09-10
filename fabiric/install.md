@@ -11,7 +11,7 @@
 11 nodejs --version  
 12 sudo npm install npm -g  
 13 sudo usermod -aG docker alex  
-14 systemctl unmask docker 
+14 systemctl unmask docker   
 14.5 set your https proxy and add the  $HOME/bin into your $PATH on bashrc  
 15 curl -sSL https://goo.gl/kFFqh5 | bash -s 1.0.6
 
