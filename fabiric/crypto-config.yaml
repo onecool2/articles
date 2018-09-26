@@ -1,0 +1,91 @@
+crypto-config.yaml
+
+配置加密文件(证书等)的生成配置
+
+1.OrdererOrgs
+
+# 排序组织
+
+1.单节点
+
+OrdererOrgs:
+  - Name: Orderer
+    Domain: example.com
+    Specs:
+      - Hostname: orderer
+
+2.多节点
+
+OrdererOrgs:
+  - Name: Orderer
+    Domain: example.com
+    Specs:
+      - Hostname: orderer
+      - Hostname: orderer1
+      - Hostname: orderer2
+      - Hostname: orderer3
+# 排序组织节点全限定域名为
+# FQDN = Hostname + Domain
+# FQDN = orderer.example.com
+
+3.重写全限定域名
+
+# CommonName
+# 默认值为 {{.Hostname}}.{{.Domain}}
+OrdererOrgs:
+  - Name: Orderer
+    Domain: example.com
+    Specs:
+      - Hostname: orderer
+        CommonName: myorderer.example.com
+
+4.替换 Specs 为 Template 配置式(未测试是否可行)
+
+# Template 
+# Count 节点总数
+# Start 节点下标起始值
+# Hostname 全限定域名 命名格式 
+# Prefix 默认 peer
+# Index 取Start值 无配置从1开始自增
+OrdererOrgs:
+  - Name: Orderer
+    Domain: example.com
+    Template:
+      Count: 2
+      # Start: 5
+      # Hostname: {{.Prefix}}{{.Index}} # default
+
+2.PeerOrgs
+
+#对等组织
+
+1.四节点双组织的对等体结构
+
+# Domain 参考OrdererOrgs
+# EnableNodeOUs 允许节点 OUS -> out of service
+# Template 参考OrdererOrgs 可替换为Specs配置式
+# Users -> Count 添加到管理员的用户帐户数
+PeerOrgs:
+  - Name: Org1
+    Domain: org1.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 1
+  - Name: Org2
+    Domain: org2.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 1
+#四个节点的全限定域名为
+peer0.org1.example.com
+peer1.org1.example.com
+peer0.org2.example.com
+peer1.org2.example.com
+
+---------------------
+
+本文来自 bbq红烧肉 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/gaolong19931208/article/details/81868396?utm_source=copy 
