@@ -129,6 +129,7 @@ oadm policy add-scc-to-user hostnetwork -z router
 
 oadm router router --replicas=1 --service-account=router  
 
+oc adm policy add-scc-to-user privileged system:serviceaccount:test:default
 
 ####################harbor
 install docker-compose 
