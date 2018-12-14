@@ -59,7 +59,6 @@ okd-master1
 okd-master2
 okd-master3
 
-
 # host group for nodes, includes region info
 [nodes]
 okd-master1 openshift_node_group_name='node-config-master-infra'
