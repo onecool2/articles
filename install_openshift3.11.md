@@ -1,3 +1,5 @@
+network manager会调用dnsmasq，请确保调用前/etc/resolv.conf内容是正确的，比如内容是：nameserver 114.114.114.114 在调用后会在/etc/dnsmasq.d中生成origin-dns.conf 和 origin-upstream-dns.conf，大致原理是：dnsmasq会比较resolv.conf的内容和当前的内容是否一致（MD5）不一致会生成origin-upstream-dns.conf，主要逻辑在/etc/NetworkManager/dispatcher.d/99-origin-dns.sh中
+
 cat /etc/sysconfig/network-scripts/ifcfg-eth0 
 NM_CONTROLLED=yes
 
