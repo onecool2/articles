@@ -1,3 +1,6 @@
+cat /etc/sysconfig/network-scripts/ifcfg-eth0 
+NM_CONTROLLED=yes
+
 yum -y install wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
 
 yum -y install  https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
