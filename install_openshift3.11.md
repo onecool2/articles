@@ -1,5 +1,14 @@
 network manager会调用dnsmasq，请确保调用前/etc/resolv.conf内容是正确的，比如内容是：nameserver 114.114.114.114 在调用后会在/etc/dnsmasq.d中生成origin-dns.conf 和 origin-upstream-dns.conf，大致原理是：dnsmasq会比较resolv.conf的内容和当前的内容是否一致（MD5）不一致会生成origin-upstream-dns.conf，主要逻辑在/etc/NetworkManager/dispatcher.d/99-origin-dns.sh中
 ## 上述那个脚本会检查有没有99-origin-dns.sh，如果有，不会生成upstream 所以，要从resolv.conf中删掉这一行
+今天解决了svc无法解析的问题：svc在openshift的里的流程是：这个稍有些复杂，首先它由/etc/resovle.conf、dnsmasq、dbus、openshift进程组成。
+resovle.conf转移请求到node也就是本机的53端口，这个端口由dnsmasq监听，它的配置文件是/etc/dnsmasq.d/origin-dns.conf，其中有几行需要注意：
+except-interface=lo是监听除了lo外的所有网卡，所以用netstat会看到dnsmasq监听几个interface。
+enable-dbus 这个一定要有，它是让openshift更新upstream的入口，也就是说除了dnsmasq中的配置upstream（/etc/dnsmasq.d/origin-upstream-dns.conf），openshift还会写两个upsteam，systemct status dnsmasq可以看到如下输出
+   using nameserver 127.0.0.1#53 for domain in-addr.arpa
+   using nameserver 127.0.0.1#53 for domain cluster.local
+以上两个会把请求转发到openshift监听的本机53端口上，完成域名到ip地址之间的转换，然后可以通过本地iptables实现流量的转发（可以通过iptable-save查看转发规则）
+刚才说到的往dbus写upsteam的进程其实是一个pod，名字是sdn-xxx，可以用 oc logs sdn-xxx -n openshift-sdn查看log，源码在https://github.com/openshift/origin/blob/e004e6513ec755a7a106dc97516703847e470d0b/pkg/dns/dnsmasq.go中
+
 cat /etc/sysconfig/network-scripts/ifcfg-eth0 
 NM_CONTROLLED=yes
 
