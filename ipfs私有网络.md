@@ -21,3 +21,6 @@
 				"http://127.0.0.1:5001",
 				"https://webui.ipfs.io"
 			]
+或者执行
+ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["http://192.168.2.14:5001", "http://127.0.0.1:5001", "https://webui.ipfs.io"]'
+ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST"]'
