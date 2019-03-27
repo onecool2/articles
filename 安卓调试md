@@ -1,0 +1,42 @@
+adb shell input keyevent 26
+		adb shell input tap 540 800 打开丁丁
+		adb shell input tap 540 600 定位到密码输入
+		adb shell input text 123456 输入密码
+		adb shell input tap 340 700 确认密码
+		adb shell input tap 650 1000 点击完成
+		
+	adb shell input tap 620 400 从消息进入打卡页面
+	
+	adb shell input tap 620 1200 进入我的
+	adb shell input tap 520 1100 进入收藏
+	adb shell input tap 520 300  进入打开页面
+													adb shell input tap 620 800
+	adb shell input tap 320 500 上班
+	adb shell input tap 320 800 下班
+/*****************************************************************************************************/	
+	adb shell input keyevent 26 	//唤醒屏幕
+	
+	adb shell input tap 540 800  //打开丁丁
+	adb shell input tap 540 600  //定位到密码输入
+	adb shell input text 123456  //输入密码
+	停一下
+	adb shell input tap 340 700  //确认密码
+	adb shell input tap 340 700  //二次确认
+		
+
+	adb shell input tap 620 1200
+    adb shell input tap 520 1100
+    adb shell input tap 520 300 
+	adb shell input tap 320 500 	//上班
+	adb shell input tap 320 800 	//下班
+	
+	adb shell  screencap -p  /storage/sdcard0/a.png //抓屏
+	adb pull /storage/sdcard0/a.png //下载屏幕文件
+	
+	adb shell input keyevent 4  
+	adb shell input keyevent 4  
+	adb shell input keyevent 4  
+	adb shell input keyevent 4  
+	adb shell input keyevent 26 
+	
+/*****************************************************************************************************/	
