@@ -34,7 +34,8 @@ openssl x509 -in proxy.csr -out proxy.crt -req -signkey proxy.key -days 3650
 ```
 * /etc/squid/squid.conf
 ```
-acl SSL_ports port 80
+# acl SSL_ports port 80
+acl SSL_ports port 443
 
 # Squid normally listens to port 3128
 http_port 3128 cert=/etc/squid/cert/proxy.crt key=/etc/squid/cert/proxy.key
