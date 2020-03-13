@@ -39,3 +39,5 @@ python setup.py install
    python object_detection/model_main.py --pipeline_config_path=object_detection/training/ssd_mobilenet_v1_coco.config --model_dir=object_detection/training --num_train_steps=50000 --num_eval_steps=2000 --alsologtostderr
 或者
    python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco.config
+
+15、python export_inference_graph.py --input_type image_tensor --pipeline_config_path training\ssd_mobilenet_v1_coco.config   --trained_checkpoint_prefix training\model.ckpt-50000  --output_directory wdj_inference_graph
