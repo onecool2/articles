@@ -1,3 +1,9 @@
+python 的版本和opencv的版本对应：
+    from .cv2 import *
+    ImportError: DLL load failed: 找不到指定的模块。
+python:3.6.10 对应opencv_python-3.4.1.15-cp36-cp36m-win_amd64.whl
+
+
 1、在windows里安装anaconda
 
 2、在anaconda里创建tensorflow的env，conda create -n tf1 python=3.6 tensorflow=1.15如果有gpu，就吧tensorflow-gpu=1.15
@@ -41,3 +47,5 @@ python setup.py install
    python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_coco.config
 
 15、python export_inference_graph.py --input_type image_tensor --pipeline_config_path training\ssd_mobilenet_v1_coco.config   --trained_checkpoint_prefix training\model.ckpt-50000  --output_directory wdj_inference_graph
+
+16、bject_detection_image1.py
