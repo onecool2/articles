@@ -1,5 +1,8 @@
 # On EC2:
 ```
+docker run -d --name centos7 --privileged centos:7 /usr/sbin/init
+docker exec -it centos7 /bin/bash
+
 cat << EOF >> /etc/yum.repos.d/CentOS-Base.repo
 # CentOS-Base.repo
 #
@@ -56,9 +59,7 @@ gpgkey=https://mirrors.aliyun.com/centos-vault/RPM-GPG-KEY-CentOS-7
 EOF
 ```
 ```
-docker run -d --name centos7 --privileged centos:7 /usr/sbin/init
 
-docker exec -it centos7 /bin/bash
 
 yum install -7 squid openssl openssl-devel stunnel httpd
 openssl req -new -x509 -days 3650 -nodes -out stunnel.pem -keyout stunnel.pem  
