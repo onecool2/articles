@@ -1,11 +1,14 @@
 # On EC2:
 ```
-yum install squid openssl openssl-devel
-yum install stunnel
-yum install httpd
+docker run -d --name centos7 --privileged centos:7 /usr/sbin/init
+
+docker exec -it centos7 /bin/bash
+
+yum install -7 squid openssl openssl-devel stunnel httpd
 openssl req -new -x509 -days 3650 -nodes -out stunnel.pem -keyout stunnel.pem  
 openssl gendh 512>> stunnel.pem
 ```
+
 ```
 cat << EOF >> /etc/stunnel/stunnel.conf
 cert = /etc/stunnel/stunnel.pem
