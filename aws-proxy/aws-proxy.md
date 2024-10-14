@@ -3,7 +3,7 @@
 docker run -d --name centos7 --privileged centos:7 /usr/sbin/init
 docker exec -it centos7 /bin/bash
 
-cat << EOF >> /etc/yum.repos.d/CentOS-Base.repo
+cat << EOF > /etc/yum.repos.d/CentOS-Base.repo
 # CentOS-Base.repo
 #
 # The mirror system uses the connecting IP address of the client and the
@@ -56,12 +56,12 @@ baseurl=https://mirrors.aliyun.com/centos-vault/7.9.2009/contrib/$basearch/
 gpgcheck=1
 enabled=0
 gpgkey=https://mirrors.aliyun.com/centos-vault/RPM-GPG-KEY-CentOS-7
+
 EOF
 ```
+
 ```
-
-
-yum install -7 squid openssl openssl-devel stunnel httpd
+yum install -y squid openssl openssl-devel stunnel httpd
 openssl req -new -x509 -days 3650 -nodes -out stunnel.pem -keyout stunnel.pem  
 openssl gendh 512>> stunnel.pem
 ```
