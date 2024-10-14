@@ -1,6 +1,6 @@
 # On EC2:
 ```
-docker run -d --name centos7 --privileged centos:7 /usr/sbin/init
+docker run -d --name centos7 -p3128:3128 --privileged centos:7 /usr/sbin/init 
 docker exec -it centos7 /bin/bash
 
 cat << EOF > /etc/yum.repos.d/CentOS-Base.repo
